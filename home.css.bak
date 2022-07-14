@@ -1,0 +1,114 @@
+body{
+	
+}
+/*INIZIO HEADER*/
+
+#header{
+	display:flex;
+	background-color:#1e1e1e;
+	border-radius: 20px 20px 20px 20px;
+	justify-content:space-between;
+	align-items:center;
+	/*impostiamo menu fisso*/
+	width:99%;
+	position:fixed;
+	margin:auto;
+}
+#header img{
+	padding-left:2%;
+}
+.navbar{
+	list-style-type:none;
+	margin-right:15%;
+}
+.navbar a{
+	text-decoration:none;
+	color:white;
+}
+.navbar li{
+	display:inline; /*disposizione orizzontale della lista*/
+	padding-right:10%;
+	color:white;
+	font-size:25px;
+	font-family:"Courier";
+}
+.navbar a:hover{
+	color:red;
+}
+/*FINE HEADER*/
+#main-content{
+	display:flex;
+	padding:2%;
+	margin-top:6%;
+}
+
+#left{
+	display:flex;
+	flex: 1 1 100px;
+}
+
+/*CENTER*/
+#center{
+	display:flex;
+	flex:5 5 100px;
+}
+
+.catalogo{}
+
+.slideshow{
+	border: solid thin black;
+	height:400px;
+	width:1000px;
+	margin:auto;
+	margin-bottom:6000px;
+}
+
+/*FINE CENTER*/
+
+#right{
+	display:flex;
+	flex: 1 1 100px;
+}
+
+#footer{}
+
+@media all and (max-width: 800px){ /*da una disposizione in colonna mettendo in evidenza la il contenuto principale quando si riducono le dimensioni della finestra di visualizzazione*/
+	#main-content{
+		flex-direction:column; /*impostiamo il layout degli elementi della classe main a colonna*/
+		margin-top:6%;
+	}
+	#header{
+		flex-direction:column;
+		background-color:white;
+		position:absolute;
+	}
+	#center{
+		flex-direction:column;
+	}
+	.navbar{
+		margin:auto;
+		padding-top:2%;
+	}
+	.navbar li{
+		display:flex;
+		justify-content:center;
+	}
+	.navbar a{
+		color:black;
+	}
+	.navbar a:hover{
+		color:white;
+		padding:3%;
+		background-color:#a61022;
+		border-radius:20px 20px 20px 20px;
+	}
+	.slideshow{
+		height:200px;
+		width:400px;
+		margin:auto;
+	}
+	.slideshow img{
+		height:200px;
+		width:400px;
+	}
+}
