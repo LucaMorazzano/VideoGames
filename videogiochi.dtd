@@ -1,0 +1,15 @@
+<!ELEMENT videogiochi (giochi+)>
+	<!ELEMENT giochi(nome, immagine, tipologia, prezzo, data, console)>
+		<!ATTLIST giochi
+					id CDATA #REQUIRED>
+					<!ELEMENT nome #PCDATA>
+					<!ELEMENT immagine #PCDATA>
+					<!ELEMENT tipologia #PCDATA>
+					<!ELEMENT prezzo #PCDATA>
+					<!ELEMENT data #PCDATA>
+						<!ATTLIST data 
+							gg CDATA #REQUIRED
+							mm CDATA #REQUIRED
+							aaaa CDATA #REQUIRED
+						>
+						<!ELEMENT console #PCDATA>

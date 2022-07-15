@@ -37,54 +37,71 @@ body{
 	color:red;
 }
 /*FINE HEADER*/
-#main-content{
-	display:flex;
-	padding:2%;
+.platform{
+	flex:5 5 100px;
 	margin-top:6%;
 }
-
-#left{
-	display:flex;
-	flex: 1 1 100px;
+.platform ul{
+	list-style-type:none;
+	margin:auto;
+	border-bottom:solid red 5px;
+	border-radius:20px 20px 20px 20px;
+	width:70%;
 }
-
-/*CENTER*/
-#center{
-	display:flex;
-	flex:5 5 100px;
+.platform li{
+	display:inline;
+	padding-right:10%;
+	padding-left:10%;
 }
-
+.platform a{
+	opacity:60%;
+}
+.platform a:hover{
+	opacity:100%;
+}
 .catalogo{}
 
 .slideshow{
 	border: solid thin black;
 	height:400px;
-	width:1000px;
-	margin:auto;
-	margin-bottom:6000px;
+	width:70%;
+	margin-top:6%;
+	margin-right:auto;
+	margin-left:auto;
+}
+.slideshow img{
+	width:100%;
+}
+.slideshow input{
+	position: absolute;
+	top: 50%;
+	left:40%;
+	opacity:50%;
+	background-color: #a61022;
+	color: white;
+	font-size: 20px;
+	font-family:Arial;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 5px;
+}
+.slideshow input:hover{
+	opacity:100%;
 }
 
-/*FINE CENTER*/
-
-#right{
-	display:flex;
-	flex: 1 1 100px;
-}
 
 #footer{}
 
 @media all and (max-width: 800px){ /*da una disposizione in colonna mettendo in evidenza la il contenuto principale quando si riducono le dimensioni della finestra di visualizzazione*/
-	#main-content{
-		flex-direction:column; /*impostiamo il layout degli elementi della classe main a colonna*/
-		margin-top:6%;
-	}
 	#header{
 		flex-direction:column;
 		background-color:white;
 		position:absolute;
 	}
-	#center{
-		flex-direction:column;
+	#header img{
+		border-bottom:solid black;
+		border-radius:20px 20px 20px 20px;
+		padding:2%;
 	}
 	.navbar{
 		margin:auto;
@@ -104,12 +121,22 @@ body{
 		border-radius:20px 20px 20px 20px;
 	}
 	.slideshow{
-		height:200px;
-		width:400px;
-		margin:auto;
+		margin-right:auto;
+		margin-left:auto;
+		margin-top:35%;
 	}
-	.slideshow img{
-		height:200px;
-		width:400px;
+	.slideshow input{
+		margin-top:20%;
+		margin-right:auto;
+		margin-left:auto;
 	}
+	.platform{
+		flex-direction:column;
+		width:40%;
+		margin-left:4%;
+	}
+	.platform ul{
+		border:0px;
+	}
+	
 }

@@ -1,0 +1,16 @@
+<!ELEMENT piattaforrme (console+)>
+	<!ELEMENT console (nome, prezzo, data, tipologia,immagine)>
+		<!ATTLIST console 
+				id CDATA #REQUIRED>
+		<!ELEMENT nome #PCDATA>
+		<!ELEMENT prezzo #PCDATA>
+		<!ELEMENT data #PCDATA>
+			<!ATTLIST data 
+							gg CDATA #REQUIRED
+							mm CDATA #REQUIRED
+							aaaa CDATA #REQUIRED
+						>
+		<!ELEMENT tipologia #PCDATA>
+			<!ATTLIST tipologia
+					ps|xbox #REQUIRED >
+		<!ELEMENT immagine #PCDATA>

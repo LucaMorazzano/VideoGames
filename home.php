@@ -50,26 +50,25 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				</nobr>
 			</ul>
 		</div>
-		<div id="main-content"> <!-- INIZIO MAIN CONTENT -->
-			<div id="left">
-				
-			</div>
 		
-			<div id="center">
-			
 				<div class="slideshow">
 					<img name="slider" height="400px" width="1000px" alt="offerte" />
+					<form action="offerte.php" method="POST" >
+						<input type="submit" class="bottone_offerte" value="Scopri le nostre offerte">
+					</form>
 				</div>
-		
+				
+				<div class="platform">
+					<ul>
+						<nobr><li><a href="" title="Ps4"><img src="Console/ps4.png" height="100px" width="180px" alt="console" /></a></li>
+						<li><a href="" title="Pc"><img src="Console/pc.png" height="100px" width="100px" alt="console" /></a></li>
+						<li><a href="" title="Xbox"><img src="Console/xbox.png" height="100px" width="100px" alt="console" /></a></li></nobr>
+					</ul>
+				</div>
+				
 				<div class="catalogo">
 					
 				</div>
-			
-			</div>
-			<div id="right">
-				
-			</div>
-		</div> <!-- FINE MAIN CONTENT -->
 		
 		<div id="footer">
 		
