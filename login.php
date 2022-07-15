@@ -51,7 +51,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						$_SESSION['totalespeso']=$userInfo['totalespeso'];
 						$_SESSION['login']=true; //aggiorniamo stato login
 						$_SESSION['carrello']=array(); //inizializziamo il carrello
-						header('Location: home.php');
+						header('Location: homepage.php');
 					}
 					else{
 						echo"<script> alert(\"Dati errati\") </script>";

@@ -13,6 +13,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			$connection= new mysqli("localhost","root","");
 			$dbname="Videogiochi";
 			$userTable="Utente";
+			$gestoreTable="Gestore";
 			$adminTable="Admin";
 			if(mysqli_errno($connection)){
 				echo"<h2 style=\"color:red\">Errore connessione</h2>";
@@ -49,6 +50,18 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			else {
 				echo "<h2 style=\"color:red\">errore creazione tabella utente</h2>";
 			}
+			//TABELLA GESTORE
+			$sql="CREATE TABLE if not exists $gestoreTable (
+					username VARCHAR(20) NOT NULL,
+					password VARCHAR(20) NOT NULL)";
+			echo $sql;
+			if(mysqli_query($connection,$sql)){
+						echo "<h2 style=\"color:green\">tabella Gestore creata</h2>";
+			}	
+			else {
+				echo "<h2 style=\"color:red\">errore creazione tabella Gestore</h2>";
+			}
+			
 			//TABELLA ADMIN
 			$sql="CREATE TABLE if not exists $adminTable (
 					username VARCHAR(20) NOT NULL,
@@ -67,7 +80,8 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			$sql[0]="INSERT INTO $userTable (username, password, email, totalespeso, saldo, valutazione) VALUES (\"luca\",\"luca\",\"luca@gmail.com\",\"0\",\"0\",\"0\")";
 			$sql[1]="INSERT INTO $userTable (username, password, email, totalespeso, saldo, valutazione) VALUES (\"andrea\",\"andrea\",\"andrea@gmail.com\",\"0\",\"0\",\"0\")";
 			$sql[2]="INSERT INTO $userTable (username, password, email, totalespeso, saldo, valutazione) VALUES (\"prof\",\"prof\",\"prof@gmail.com\",\"0\",\"0\",\"0\")";
-			$sql[3]="INSERT INTO $adminTable(username, password) VALUES (\"admin\",\"admin\")";
+			$sql[3]="INSERT INTO $gestoreTable(username, password) VALUES (\"manager\",\"manager\")";
+			$sql[4]="INSERT INTO $adminTable(username, password) VALUES (\"admin\",\"admin\")";
 			while($i<sizeof($sql)){
 				echo "$sql[$i] \n <br />";
 				if(mysqli_query($connection,$sql[$i])){
