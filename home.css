@@ -59,7 +59,11 @@ body{
 .platform a:hover{
 	opacity:100%;
 }
-.catalogo{}
+.catalogo{
+	background-color:blue;
+	height:200px;
+	width:400px;
+}
 
 .slideshow{
 	border: solid thin black;

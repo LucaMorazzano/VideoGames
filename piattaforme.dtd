@@ -1,7 +1,8 @@
-<!ELEMENT piattaforrme (console+)>
+<!ELEMENT piattaforme (console+)>
 	<!ELEMENT console (nome, prezzo, data, tipologia,immagine)>
 		<!ATTLIST console 
-				id CDATA #REQUIRED>
+				id CDATA #REQUIRED
+				cprod Sony|Microsoft|Nintendo #REQUIRED>
 		<!ELEMENT nome #PCDATA>
 		<!ELEMENT prezzo #PCDATA>
 		<!ELEMENT data #PCDATA>
@@ -10,7 +11,4 @@
 							mm CDATA #REQUIRED
 							aaaa CDATA #REQUIRED
 						>
-		<!ELEMENT tipologia #PCDATA>
-			<!ATTLIST tipologia
-					ps|xbox #REQUIRED >
 		<!ELEMENT immagine #PCDATA>

@@ -5,8 +5,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
+		<title>Home</title>
 		<style type="text/css">
-			@import url(home.css)
+				@import url("home.css");
 		</style>
 		
 		<script>
@@ -31,7 +32,8 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			<ul class="navbar">
 				<nobr>
 				<?php
-				$_SESSION['login']=true;
+				require_once("connection.php");
+				session_start();
 				if(isset($_SESSION['login'])){
 					echo "<li><a href=\"\">ACCOUNT</a></li>";
 					echo "<li><a href=\"\">CREDITI</a></li>";
@@ -41,7 +43,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				<li><a href="">FAQ</a></li>
 				<?php
 					if(isset($_SESSION['login'])){
-						echo "<li><a href=\"\">LOGOUT</a></li>";
+						echo "<li><a href=\"logout.php\">LOGOUT</a></li>";
 					}
 					else{
 						echo "<li><a href=\"\">LOGIN</a></li></nobr>";
