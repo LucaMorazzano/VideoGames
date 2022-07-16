@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE telefoni SYSTEM "videogiochi.dtd">
+
+<videogiochi>
+	<gioco id="345" console="Play Station">
+		<nome>Grand Theft Auto V</nome>
+		<immagine>Games/gta5.png</immagine>
+		<tipologia>Action-Adventure</tipologia>
+		<prezzo>39.99</prezzo>
+		<data gg="12" mm="01" aaaa="2014">
+		</data>
+	</gioco>
+	
+	<gioco id="315" console="Play Station">
+		<nome>Fifa 22 </nome>
+		<immagine>Games/fifa22.png</immagine>
+		<tipologia>Sport</tipologia>
+		<prezzo>59.99</prezzo>
+		<data gg="12" mm="09" aaaa="2021">
+		</data>
+	</gioco>
+	
+	<gioco id="321" console="Play Station">
+		<nome>Battlefield V</nome>
+		<immagine>Games/bf5.png</immagine>
+		<tipologia>FPS</tipologia>
+		<prezzo>29.99</prezzo>
+		<data gg="10" mm="02" aaaa="2020">
+		</data>
+	</gioco>
+	
+	<gioco id="300" console="Play Station">
+		<nome>Spider Man</nome>
+		<immagine>Games/spiderman.png</immagine>
+		<tipologia>Action-Adventure</tipologia>
+		<prezzo>69.99</prezzo>
+		<data gg="30" mm="09" aaaa="2021">
+		</data>
+	</gioco>
+	
+	<gioco id="311" console="Xbox">
+		<nome>Halo Infinite</nome>
+		<immagine>Games/halo.png</immagine>
+		<tipologia>FPS</tipologia>
+		<prezzo>19.99</prezzo>
+		<data gg="14" mm="03" aaaa="2015">
+		</data>
+	</gioco>
+	
+	<gioco id="323" console="Play Station">
+		<nome>Hitman 2</nome>
+		<immagine>Games/hitman.png</immagine>
+		<tipologia>Action</tipologia>
+		<prezzo>19.99</prezzo>
+		<data gg="21" mm="06" aaaa="2017">
+		</data>
+	</gioco>
+	
+	<gioco id="314" console="Play Station">
+		<nome>Minecraft</nome>
+		<immagine>Games/mc.png</immagine>
+		<tipologia>Adventure</tipologia>
+		<prezzo>19.99</prezzo>
+		<data gg="12" mm="03" aaaa="2011">
+		</data>
+	</gioco>
+	
+	<gioco id="318" console="Xbox">
+		<nome>Super Mario Kart</nome>
+		<immagine>Games/mario_kart.png</immagine>
+		<tipologia>Sport</tipologia>
+		<prezzo>9.99</prezzo>
+		<data gg="15" mm="02" aaaa="2006">
+		</data>
+	</gioco>
+	
+	<gioco id="319" console="Xbox">
+		<nome>Super Paper Mario</nome>
+		<immagine>Games/super_paper_mario.png</immagine>
+		<tipologia>Fantasy-Adventure</tipologia>
+		<prezzo>9.99</prezzo>
+		<data gg="15" mm="02" aaaa="2005">
+		</data>
+	</gioco>
+	
+	
+
+
+</videogiochi>

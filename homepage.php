@@ -7,7 +7,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	<head>
 		<title>Home</title>
 		<style type="text/css">
-				@import url("home.css");
+				@import url("homepage.css");
 		</style>
 		
 		<script>
@@ -69,7 +69,38 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				</div>
 				
 				<div class="catalogo">
-					
+					<?php
+					/*estraiamo informazioni dai file xml con metodo dom*/
+						$xmlString=""; //conterra il contenuto del file xml
+						foreach ( file("videogiochi.xml") as $node ) {
+							$xmlString .= trim($node); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
+						}
+						$doc=new DomDocument(); //inizializziamo il documento
+						//estraiamo i videogiochi e salviamo le informazioni nelle variabili
+						$doc->loadXML($xmlString);
+						$root = $doc->documentElement;
+						$elements = $root->childNodes;
+						//stampiamo a schermo i videogiochi estraendo le informazioni necessarie
+						for($i=0; $i< sizeof($elements) ; $i++){
+							$gioco=$elements->item($i);
+							$id=$gioco->getAttribute('id');
+							$console=$gioco->getAttribute('console'); //piattaforma su cui è disponibile il gioco
+							$nome= $gioco->nextSibling;
+							$nomevalue= $nome->textContent;
+							$immagine= $nome->nextSibling;
+							$immaginevalue= $immagine->textContent;
+							$tipologia= $immagine->nextSibling;
+							$tipologiavalue=$tipologia->textContent;
+							$prezzo=$tipologia->nextSibling;
+							$prezzovalue=(double)($prezzo->textContent); //casting necessario
+							$data= $prezzo->nextSibling;
+							//estraiamo gli attributi della data di uscita
+							$giorno= $data->getAttribute('gg');
+							$mese= $data->getAttribute('mm');
+							$anno= $data->getAttribute('aaaa');
+						}
+						
+					?>
 				</div>
 		
 		<div id="footer">
