@@ -15,9 +15,6 @@ body{
 	position:fixed;
 	margin:auto;
 }
-#header img{
-	padding-left:2%;
-}
 .navbar{
 	list-style-type:none;
 	margin-right:15%;

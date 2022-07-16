@@ -31,7 +31,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	
 	<body>
 		<div id="header">
-			<img src="logo.png" height="35px" width="300px" alt="logo" />
+			<a style="padding-left:2%" href="homepage.php"><img src="logo.png" height="35px" width="300px" alt="logo" /></a>
 			<ul class="navbar">
 				<nobr>
 				<?php
@@ -40,7 +40,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				if(isset($_SESSION['login'])){
 					echo "<li><a href=\"\">ACCOUNT</a></li>";
 					echo "<li><a href=\"\">CREDITI</a></li>";
-					echo "<li><a href=\"\">CARRELLO</a></li>";
+					echo "<li><a href=\"carrello.php\">CARRELLO</a></li>";
 				}
 				?>
 				<li><a href="">FAQ</a></li>
@@ -76,6 +76,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					<?php
 					/*estraiamo informazioni dai file xml con metodo dom*/
 						$xmlString=""; //conterra il contenuto del file xml
+						$arraygiochi=array(); //array che conterrà tutti i giochi
 						foreach ( file("videogiochi.xml") as $node ) {
 							$xmlString .= trim($node); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
 						}
@@ -89,6 +90,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						echo "<ul class=\"giochi\">";
 						for($i=0; $i< sizeof($elements) ; $i++){
 							$gioco=$elements->item($i);
+							array_push($arraygiochi,$gioco); //inseriamo i giochi nell'array (servirà successivamente)
 							$id=$gioco->getAttribute('id');
 							$console=$gioco->getAttribute('console'); //piattaforma su cui è disponibile il gioco
 							$nome= $gioco->firstChild;
@@ -105,7 +107,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 							$mese= $data->getAttribute('mm');
 							$anno= $data->getAttribute('aaaa');
 								echo"<li><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" />$nomevalue $prezzovalue 
-									<input type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\"></li>";
+									<input type=\"submit\" name=\"id\" value=\"$id\"></li>";
 						}
 						echo "</ul></form>";
 					?>
@@ -113,8 +115,19 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					<?php
 					//in questo blocco php gestiremo l'aggiunta al carrello dei prodotti
 					if(isset($_POST['id']) && isset($_SESSION['login'])){ //se siamo loggati e se è stato schiacciato il bottone aggiungi al carrello
-						
-						
+						$id= $_POST['id'];
+						//cerchiamo il gioco nell'array che abbiamo creato precedentemente
+						for($i=0; $i< sizeof($arraygiochi); $i++){
+							$currid= $arraygiochi[$i]->getAttribute('id');
+							if($currid == $id){
+								array_push($_SESSION['carrello'], $arraygiochi[$i]); //aggiungiamo l'elemento al carrello
+								echo "<script> alert(\"Elemento aggiunto al carrello\") </script>";
+								break;
+							}
+						}
+					}
+					else if (isset($_POST['id']) && !isset($_SESSION['login'])){ //se abbiamo usato il bottone senza essere loggati
+						echo "<script>alert(\"Azione non permessa login necessario\")</script>";
 					}
 					
 					?>
