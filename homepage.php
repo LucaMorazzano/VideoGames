@@ -12,6 +12,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 		<script>
 		var i=0;
+			function carrello(nome){
+				alert(nome + "aggiunto al carrello");
+			}
 			function slideshow(){
 				var img =["Slideshow/img1.jpg","Slideshow/img2.jpg","Slideshow/img3.jpg","Slideshow/img4.jpg"];
 				
@@ -55,7 +58,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 				<div class="slideshow">
 					<img name="slider" height="400px" width="1000px" alt="offerte" />
-					<form action="offerte.php" method="POST" >
+					<form action="#offerte"> 
 						<input type="submit" class="bottone_offerte" value="Scopri le nostre offerte">
 					</form>
 				</div>
@@ -68,6 +71,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					</ul>
 				</div>
 				
+				<a name="offerte"> 
 				<div class="catalogo">
 					<?php
 					/*estraiamo informazioni dai file xml con metodo dom*/
@@ -81,11 +85,13 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						$root = $doc->documentElement;
 						$elements = $root->childNodes;
 						//stampiamo a schermo i videogiochi estraendo le informazioni necessarie
+						echo "<form action=\"homepage.php\" method=\"POST\" >";
+						echo "<ul class=\"giochi\">";
 						for($i=0; $i< sizeof($elements) ; $i++){
 							$gioco=$elements->item($i);
 							$id=$gioco->getAttribute('id');
 							$console=$gioco->getAttribute('console'); //piattaforma su cui è disponibile il gioco
-							$nome= $gioco->nextSibling;
+							$nome= $gioco->firstChild;
 							$nomevalue= $nome->textContent;
 							$immagine= $nome->nextSibling;
 							$immaginevalue= $immagine->textContent;
@@ -98,10 +104,22 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 							$giorno= $data->getAttribute('gg');
 							$mese= $data->getAttribute('mm');
 							$anno= $data->getAttribute('aaaa');
+								echo"<li><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" />$nomevalue $prezzovalue 
+									<input type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\"></li>";
 						}
+						echo "</ul></form>";
+					?>
+					
+					<?php
+					//in questo blocco php gestiremo l'aggiunta al carrello dei prodotti
+					if(isset($_POST['id']) && isset($_SESSION['login'])){ //se siamo loggati e se è stato schiacciato il bottone aggiungi al carrello
 						
+						
+					}
+					
 					?>
 				</div>
+				</a>
 		
 		<div id="footer">
 		

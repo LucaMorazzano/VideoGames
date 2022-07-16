@@ -60,12 +60,30 @@ body{
 	opacity:100%;
 }
 .catalogo{
-	background-color:red;
-	height:200px;
 	width:100%;
 	margin-top:6%;
+	align-items:center;
 }
 
+.catalogo .giochi{
+	list-style-type:none;
+}
+.giochi li{
+	display:inline;
+}
+.giochi li input{
+	background-color: #a61022;
+	color: white;
+	font-size: 15px;
+	font-family:Arial;
+	padding: 10px 10px;
+	border: none;
+	border-radius: 5px;
+	opacity:75%;
+}
+.giochi li input:hover{
+	opacity:100%;
+}
 .slideshow{
 	border: solid thin black;
 	height:400px;

@@ -49,7 +49,7 @@
 	
 	<gioco id="323" console="Play Station">
 		<nome>Hitman 2</nome>
-		<immagine>Games/hitman.png</immagine>
+		<immagine>Games/hitman2.png</immagine>
 		<tipologia>Action</tipologia>
 		<prezzo>19.99</prezzo>
 		<data gg="21" mm="06" aaaa="2017">
