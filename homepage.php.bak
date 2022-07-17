@@ -10,6 +10,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 body{
 	display:flex;
 	flex-direction:column;
+	background-color: #009900;
 }
 /*INIZIO HEADER*/
 
@@ -103,7 +104,7 @@ body{
 }
 /*PERSONALIZZAZIONE SCROLLBAR*/
 ::-webkit-scrollbar{
-	width:10px;
+	width:5px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
