@@ -67,8 +67,10 @@ body{
 }
 .giochi li{
 	display:inline;
+	align-items:center;
+	justify-content:space-around;
 }
-.giochi li input{
+.giochi input{
 	background-color: #a61022;
 	color: white;
 	font-size: 15px;
@@ -78,7 +80,7 @@ body{
 	border-radius: 5px;
 	opacity:75%;
 }
-.giochi li input:hover{
+.giochi input:hover{
 	opacity:100%;
 }
 .slideshow{

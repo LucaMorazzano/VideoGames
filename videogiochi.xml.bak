@@ -6,7 +6,7 @@
 		<nome>Grand Theft Auto V</nome>
 		<immagine>Games/gta5.png</immagine>
 		<tipologia>Action-Adventure</tipologia>
-		<prezzo>400</prezzo>
+		<prezzo>39.99</prezzo>
 		<data gg="12" mm="01" aaaa="2014">
 		</data>
 	</gioco>

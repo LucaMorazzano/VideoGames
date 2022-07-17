@@ -7,7 +7,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	<head>
 		<title>Carrello</title>
 		<style type="text/css">
-		#header{
+body{
+	display:flex;
+	flex-direction:column;
+}
+#header{
 	display:flex;
 	background-color:#1e1e1e;
 	border-radius: 20px 20px 20px 20px;
@@ -38,16 +42,26 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 }
 /*FINE HEADER*/
 #carrello{
+	margin-top:6%;
 	margin-left:auto;
 	margin-right:auto;
 }
 .giochi{
-	list-style-type:none;
+	display:flex;
+	align-items:center;
+	overflow:scroll;
+	background-color:#1e1e1e;
+	padding:2%;
+	border-radius:20px 20px 20px 20px;
 }
-.giochi li{
-	display:inline;
+.giochi p{
+	font-family:Arial;
+	font-size:20px;
+	color:white;
+	padding:1%;
 }
-.giochi li input{
+
+.giochi p input{
 	background-color: #a61022;
 	color: white;
 	font-size: 15px;
@@ -57,7 +71,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	border-radius: 5px;
 	opacity:75%;
 }
-.giochi li input:hover{
+.giochi p input:hover{
 	opacity:100%;
 }
 </style>
@@ -68,7 +82,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			session_start();
 			if(isset($_SESSION['login'])){ //se siamo loggati
 		?>
-		<div id="heade">
+		<div id="header">
 			<a style="padding-left:2%" href="homepage.php"><img src="logo.png" height="35px" width="300px" alt="logo" /></a>
 			<ul class="navbar">
 				<nobr>
@@ -82,28 +96,42 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		</div>
 		<div id="carrello">
 			<?php
-				echo "<form action=\"rimuovi.php\" method=\"POST\" >";
-				echo "<ul class=\"giochi\">";
-				foreach($_SESSION['carrello'] as $gioco){
-					//estraiamo informazioni su elementi presenti nel carrello
-					$id=$gioco->getAttribute('id');
-					$nome=$gioco->firstChild;
-					$nomevalue=$nome->textContent;
-					$immagine= $nome->nextSibling;
-					$immaginevalue= $immagine->textContent;
-					$tipologia= $immagine->nextSibling;
-					$tipologiavalue=$tipologia->textContent;
-					$prezzo=$tipologia->nextSibling;
-					$prezzovalue=(double)($prezzo->textContent); //casting necessario
-					$data= $prezzo->nextSibling;
-					//estraiamo gli attributi della data di uscita
-					$giorno= $data->getAttribute('gg');
-					$mese= $data->getAttribute('mm');
-					$anno= $data->getAttribute('aaaa');
-					echo"<li><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" />$nomevalue $prezzovalue 
-							<input type=\"submit\" name=\"id\" value=\"$id\"></li>";	/*bottone per rimuovere elemento dal carrello*/				
+				$xmlString="";
+				foreach ( file("videogiochi.xml") as $node ) {
+						$xmlString .= trim($node); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
 				}
-				echo "</ul></form>";
+				$doc=new DomDocument(); //inizializziamo il documento
+				//estraiamo i videogiochi e salviamo le informazioni nelle variabil
+				$doc->loadXML($xmlString);
+				$root = $doc->documentElement;
+				$elements = $root->childNodes;
+				
+				echo "<form class=\"giochi\" action=\"carrello.php\" method=\"POST\">";
+				foreach($_SESSION['carrello'] as $id){
+					//cerchiamo ora nel file xml i telefoni aventi tali id
+					for($i=0; $i<sizeof($elements); $i++){
+						$gioco=$elements->item($i);
+						$currid=$gioco->getAttribute('id');
+						if($currid == $id){ // se l'id combacia allora estraiamo e stampiamo
+							$nome=$gioco->firstChild;
+							$nomevalue=$nome->textContent;
+							$immagine= $nome->nextSibling;
+							$immaginevalue= $immagine->textContent;
+							$tipologia= $immagine->nextSibling;
+							$tipologiavalue=$tipologia->textContent;
+							$prezzo=$tipologia->nextSibling;
+							$prezzovalue=(double)($prezzo->textContent); //casting necessario
+							$data= $prezzo->nextSibling;
+							//estraiamo gli attributi della data di uscita
+							$giorno= $data->getAttribute('gg');
+							$mese= $data->getAttribute('mm');
+							$anno= $data->getAttribute('aaaa');
+							echo"<img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><p><nobr><strong>$nomevalue</strong></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
+									<input type=\"submit\" name=\"id\" value=\"Rimuovi\"></p>";			
+						}
+					}
+				}
+				echo "</form>";
 			
 			?>
 		
