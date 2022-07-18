@@ -254,7 +254,7 @@ body{
 				<div class="platform">
 					<ul>
 						<nobr><li><a href="" title="Ps4"><img src="Console/ps4.png" height="100px" width="180px" alt="console" /></a></li>
-						<li><a href="" title="Pc"><img src="Console/pc.png" height="100px" width="100px" alt="console" /></a></li>
+						<li><a href="" title="Switch"><img src="Console/ndswitch.png" height="110px" width="110px" alt="console" /></a></li>
 						<li><a href="" title="Xbox"><img src="Console/xbox.png" height="100px" width="100px" alt="console" /></a></li></nobr>
 					</ul>
 				</div>
