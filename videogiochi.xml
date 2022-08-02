@@ -5,7 +5,7 @@
 	<gioco id="345" console="Play Station">
 		<nome>Grand Theft Auto V</nome>
 		<immagine>Games/gta5.png</immagine>
-		<tipologia>Action-Adventure</tipologia>
+		<tipologia value="Action" />
 		<prezzo>400</prezzo>
 		<data gg="12" mm="01" aaaa="2014" />
 	</gioco>
@@ -13,7 +13,7 @@
 	<gioco id="315" console="Play Station">
 		<nome>Fifa 22 </nome>
 		<immagine>Games/fifa22.png</immagine>
-		<tipologia>Sport</tipologia>
+		<tipologia value="Sport" />
 		<prezzo>600</prezzo>
 		<data gg="12" mm="09" aaaa="2021" />
 	</gioco>
@@ -21,7 +21,7 @@
 	<gioco id="321" console="Play Station">
 		<nome>Battlefield V</nome>
 		<immagine>Games/bf5.png</immagine>
-		<tipologia>FPS</tipologia>
+		<tipologia value="FPS" />
 		<prezzo>350</prezzo>
 		<data gg="10" mm="02" aaaa="2020" />
 	</gioco>
@@ -29,7 +29,7 @@
 	<gioco id="300" console="Play Station">
 		<nome>Spider Man</nome>
 		<immagine>Games/spiderman.png</immagine>
-		<tipologia>Action-Adventure</tipologia>
+		<tipologia value="Adventure" />
 		<prezzo>600</prezzo>
 		<data gg="30" mm="09" aaaa="2021" />
 	</gioco>
@@ -37,7 +37,7 @@
 	<gioco id="311" console="Xbox">
 		<nome>Halo Infinite</nome>
 		<immagine>Games/halo.png</immagine>
-		<tipologia>FPS</tipologia>
+		<tipologia value="FPS" />
 		<prezzo>210</prezzo>
 		<data gg="14" mm="03" aaaa="2015" />
 	</gioco>
@@ -45,7 +45,7 @@
 	<gioco id="323" console="Play Station">
 		<nome>Hitman 2</nome>
 		<immagine>Games/hitman2.png</immagine>
-		<tipologia>Action</tipologia>
+		<tipologia value="Action" />
 		<prezzo>200</prezzo>
 		<data gg="21" mm="06" aaaa="2017" />
 	</gioco>
@@ -53,7 +53,7 @@
 	<gioco id="314" console="Play Station">
 		<nome>Minecraft</nome>
 		<immagine>Games/mc.png</immagine>
-		<tipologia>Adventure</tipologia>
+		<tipologia value="Adventure" />
 		<prezzo>190</prezzo>
 		<data gg="12" mm="03" aaaa="2011" />
 	</gioco>
@@ -61,7 +61,7 @@
 	<gioco id="318" console="Xbox">
 		<nome>Super Mario Kart</nome>
 		<immagine>Games/mario_kart.png</immagine>
-		<tipologia>Sport</tipologia>
+		<tipologia value="Sport" />
 		<prezzo>90</prezzo>
 		<data gg="15" mm="02" aaaa="2006"/>
 	</gioco>
@@ -69,7 +69,7 @@
 	<gioco id="319" console="Xbox">
 		<nome>Super Paper Mario</nome>
 		<immagine>Games/super_paper_mario.png</immagine>
-		<tipologia>Fantasy-Adventure</tipologia>
+		<tipologia value="Arcade" />
 		<prezzo>90</prezzo>
 		<data gg="15" mm="02" aaaa="2005" />
 	</gioco>

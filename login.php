@@ -112,7 +112,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				$sql="SELECT * FROM Utente WHERE username='$username' AND password='$password'"; 
 				if($result=mysqli_query($connection,$sql)){
 					$userInfo= mysqli_fetch_array($result); //contiene tutte le informazioni dell'utente 
-					if($userInfo){ //salviamo le informazioni nella sessione corrente
+					if($userInfo && $userInfo['ban']==0){ //salviamo le informazioni nella sessione corrente
 						$_SESSION['username']=$username;
 						$_SESSION['password']=$password;
 						$_SESSION['saldo']=$userInfo['saldo'];
@@ -123,7 +123,10 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						$_SESSION['carrello']=array(); //inizializziamo il carrello
 						header('Location: homepage.php');
 					}
-					else{
+					else if($userInfo && $userInfo['ban']==1){
+						echo "<script> alert (\"Account bannato contattare l'admin per essere riammesso\");</script>";
+					}
+					else if(!$userInfo){
 						echo"<script> alert(\"Dati errati\") </script>";
 					}
 				}

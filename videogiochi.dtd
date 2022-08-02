@@ -2,11 +2,14 @@
 	<!ELEMENT gioco(nome, immagine, tipologia, prezzo, data, console)>
 		<!ATTLIST gioco
 					id CDATA #REQUIRED
-					console Play Station|Xbox
+					console Play Station|Xbox|Nintendo
 					>
 		<!ELEMENT nome #PCDATA>
 		<!ELEMENT immagine #PCDATA>
 		<!ELEMENT tipologia #PCDATA>
+			<!ATTLIST tipologia
+				value Action|Adventure|Sport|Arcade|FPS|Fantasy #REQUIRED
+			>
 		<!ELEMENT prezzo #PCDATA>
 		<!ELEMENT data #PCDATA>
 			<!ATTLIST data 

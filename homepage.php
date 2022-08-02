@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?php 
+	session_start();
+?>
 <!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -37,7 +40,7 @@ body{
 	padding-right:10%;
 	color:white;
 	font-size:25px;
-	font-family:"Courier";
+	font-family:Courier;
 }
 .navbar a:hover{
 	color:red;
@@ -65,19 +68,22 @@ body{
 .platform a:hover{
 	opacity:100%;
 }
+/*INIZIO CATALOGO SECTION*/
 .catalogo{
 	width:100%;
 	margin-top:6%;
 	align-items:center;
+	background-color:#1e1e1e;
+	border-radius:20px 20px 20px 20px;
+	color:white;
 }
 
 .catalogo .giochi{
 	display:flex;
 	align-items:center;
 	overflow:scroll;
-	background-color:#1e1e1e;
 	padding:2%;
-	border-radius:20px 20px 20px 20px;
+	padding-top:1%;
 }
 .giochi input{
 	display:inline;
@@ -99,7 +105,6 @@ body{
 	font-size:20px;
 	color:white;
 	padding:1%;
-	
 }
 /*PERSONALIZZAZIONE SCROLLBAR*/
 ::-webkit-scrollbar{
@@ -115,6 +120,7 @@ body{
 ::-webkit-scrollbar-thumb:hover {
   background: #a61022;
 }
+/*FINE SCROLLBAR*/
 .slideshow{
 	border: solid thin black;
 	height:400px;
@@ -142,7 +148,31 @@ body{
 .slideshow input:hover{
 	opacity:100%;
 }
+.catalogo h3{
+	font-family:Courier;
+	margin-left:15px;
+	padding-top:15px;
+	color:#a61022;
+}
+.selection{
+	font-family:Arial;
+	margin-left:15px;
+}
+.selection input{
+	margin-left:10px;
+	opacity:80%;
+	background-color: #a61022;
+	color: white;
+	font-family:Arial;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+}
+.selection input:hover{
+	opacity:100%;
+}
 
+/*FINE SEZIONE CATALOGO*/
 
 #footer{}
 
@@ -211,21 +241,17 @@ body{
 					i=0;
 				setTimeout(slideshow,3000);
 			}
-			window.onload=slideshow;
+			window.onload=slideshow; /*metodo classe window del bom*/
 		</script>
 	</head>
-	
-	<body>
-	<?php
-		session_start();
-		require_once("connection.php");
-	?>			
+	<body>	
 		<div id="header">
 			<a style="padding-left:2%" href="homepage.php"><img src="logo.png" height="35px" width="300px" alt="logo" /></a>
 			<ul class="navbar">
 				<nobr>
 				<?php
 				if(isset($_SESSION['login'])){
+					require_once("connection.php");
 					echo "<li><a href=\"\">ACCOUNT</a></li>";
 					echo "<li><a href=\"\">CREDITI</a></li>";
 					echo "<li><a href=\"carrello.php\">CARRELLO</a></li>";
@@ -253,8 +279,8 @@ body{
 				
 				<div class="platform">
 					<ul>
-						<nobr><li><a href="" title="Ps4"><img src="Console/ps4.png" height="100px" width="180px" alt="console" /></a></li>
-						<li><a href="" title="Switch"><img src="Console/ndswitch.png" height="110px" width="110px" alt="console" /></a></li>
+						<nobr><li><a href="" title="PlayStation"><img src="Console/ps4.png" height="100px" width="180px" alt="console" /></a></li>
+						<li><a href="" title="Nintendo"><img src="Console/ndswitch.png" height="110px" width="110px" alt="console" /></a></li>
 						<li><a href="" title="Xbox"><img src="Console/xbox.png" height="100px" width="100px" alt="console" /></a></li></nobr>
 					</ul>
 				</div>
@@ -264,6 +290,48 @@ body{
 					
 				</div>
 				<div class="catalogo">
+					<form action="homepage.php #offerte" method="POST" > <!-- FORM PER STABILIRE ORDINAMENTO CATALOGO -->
+						<h3>MODALIT&Agrave VISUALIZZAZIONE CATALOGO:</h3>
+						<p class="selection">
+						Prodotti:<select name="prodotti">
+							<option value="prodottidefault">tutti</option>
+							<option value="videogiochi">Videogiochi</option>
+							<option value="console">Console</option>
+						</select>
+						Prezzo: <select name="prezzo">
+							<option value="prezzodefault">default</option>
+							<option value="prezzocrescente">crescente</option>
+							<option value="prezzodecrescente">decrescente</option>
+						</select>
+						Tipologia: <select name="tipologia"> <!-- tipologie definite nella dtd come attributi -->
+							<option value="tipologiadefault">tutti</option>
+							<option value="Action">Action</option>
+							<option value="Adventure">Adventure</option>
+							<option value="Sport">Sport</option>
+							<option value="Arcade">Arcade</option>
+							<option value="FPS">Fps</option>
+							<option value="Fantasy">Fantasy</option>
+						</select>
+						Data di uscita: <select name="data">
+							<option value="datadefault">default</option>
+							<option value="datacrescente">crescente</option>
+							<option value="datadecrescente">decrescente</option>
+						</select>
+						Piattaforma: <select name="piattaforma">
+							<option value="consoledefault">tutte</option>
+							<option value="PlayStation">PlayStation</option>
+							<option value="Xbox">Xbox</option>
+							<option value="Nintendo">Nintendo</option>
+						</select>
+						Ordine alfabetico: <select name="alfabeto">
+							<option value="alfabetodefault">default</option>
+							<option value="alfabetocrescente">crescente</option>
+							<option value="alfabetodecrescente">crescente</option>
+						</select>
+							<input type="submit" name="viewbutton" value="mostra">
+						</select></p><hr>
+					</form>
+				
 					<?php
 					/*estraiamo informazioni dai file xml con metodo dom*/
 						$xmlString=""; //conterra il contenuto del file xml
@@ -286,7 +354,7 @@ body{
 							$immagine= $nome->nextSibling;
 							$immaginevalue= $immagine->textContent;
 							$tipologia= $immagine->nextSibling;
-							$tipologiavalue=$tipologia->textContent;
+							$tipologiavalue=$tipologia->getAttribute('value');
 							$prezzo=$tipologia->nextSibling;
 							$prezzovalue=(double)($prezzo->textContent); //casting necessario
 							$data= $prezzo->nextSibling;
@@ -294,8 +362,14 @@ body{
 							$giorno= $data->getAttribute('gg');
 							$mese= $data->getAttribute('mm');
 							$anno= $data->getAttribute('aaaa');
+							if(!isset($_POST['viewbutton'])){ //condizione default
 								echo"<img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
 									<input type=\"submit\" name=\"id\" value=\"$id\"></p>";
+							}
+							else{/*varie modalità visualizzazione*/
+								if($_POST['prezzo']=="prezzocrescente")
+									echo "prezzo";
+							}
 						}
 						echo "</form>";
 					?>
