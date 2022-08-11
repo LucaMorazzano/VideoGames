@@ -97,6 +97,15 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					i=0;
 				setTimeout(slideshow,3000);
 			}
+			//Validatori form
+			function formrecensioni(){ // se la recensione è vuota evitiamo di inviare la form al server
+					var textarea= document.forms['form_recensioni']['nuovarecensione'].value;
+					if(textarea == ""){
+						alert("Scrivere la recensione prima di inviarla");
+						return false;
+					}
+					else return true;
+			}
 			window.onload=slideshow; /*metodo classe window del bom*/
 		</script>
 		<!-- ESTRAZIONE ELEMENTI ROOT DAI VARI DOCUMENTI XML -->
@@ -262,8 +271,22 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			</div>
 		
 		</div>
+		
+		<!-- FOOTER SECTION -->
+		<h3 class="footer_title">DICONO DI NOI</h3>
 		<div id="footer"> <!-- Sezione che contiene le recensioni dei clienti ( dicono di noi ... ) oltre che contatti e informazioni sulla sede -->
-			<h3 class="footer_title">DICONO DI NOI</h3>
+			<form name="form_recensioni" class="form_recensioni" action="recensione.php" method="POST" onsubmit="return formrecensioni()" >
+				<h4>La tua opinione &egrave importante, proprio per questo abbiamo riservato un area testuale per te al fine di conoscerla: </h4>
+				<img src="stella.png" height="10px" width="10px" alt="not found" /><select name="nuovavalutazione">
+					<option value="5">5</option>
+					<option value="4">4</option>
+					<option value="3">3</option>
+					<option value="2">2</option>
+					<option value="1">1</option>
+				</select><br />
+				<textarea name="nuovarecensione"></textarea><br />
+				<input type="submit" name="bottone_recensione" value="invia">
+			</form>
 			<div class="boxrecensioni">
 			<?php
 			/*stampiamo le recensioni estraendo le info dal doc xml*/

@@ -109,6 +109,18 @@ body{
 #footer{
 	background-color:white;
 	color:black;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+}
+#footer .form_recensioni{
+	text-align:justify;
+}
+#footer .form_recensioni h4{
+	width:250px;
+}
+.form_recensioni select{
+	margin-bottom:2%;
 }
 #footer .boxrecensioni{
 	display:flex;
@@ -116,7 +128,7 @@ body{
 	align-items:center;
 	overflow:scroll;
 }
-#footer .recensione{
+#footer .boxrecensioni .recensione{
 	color:black;
 	margin-left:5%;
 }
