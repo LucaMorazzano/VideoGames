@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE telefoni SYSTEM "recensioni.dtd">
+<recensioni>
+	<recensione>
+		<username>Luca</username>
+		<valutazione>5</valutazione>
+		<testo>Ottima organizzazione </testo>
+	</recensione>
+	<recensione>
+		<username>Andrea</username>
+		<valutazione>4</valutazione>
+		<testo>Vasta gamma di prodotti di ottima qualità </testo>
+	</recensione>
+</recensioni>

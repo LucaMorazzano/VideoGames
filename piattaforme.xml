@@ -4,30 +4,30 @@
 <piattaforme>
 	<console id="1" cprod="Sony">
 		<nome>Play Station 4</nome>
-		<prezzo>199.99</prezzo>
+		<prezzo>1200</prezzo>
 		<data gg="10" mm="12" aaaa="2014" />
-		<immagine>Piattaforme/ps4</immagine>
+		<immagine>Piattaforme/ps4.png</immagine>
 	</console>
 	
 	<console id="2" cprod="Sony">
 		<nome>Play Station 5</nome>
-		<prezzo>499.99</prezzo>
+		<prezzo>2000</prezzo>
 		<data gg="10" mm="12" aaaa="2020" />
-		<immagine>Piattaforme/ps5</immagine>
+		<immagine>Piattaforme/ps5.png</immagine>
 	</console>
 	
 	<console id="3" cprod="Nintendo">
 		<nome>Nintendo Switch</nome>
-		<prezzo>149.99</prezzo>
+		<prezzo>1000</prezzo>
 		<data gg="10" mm="12" aaaa="2019" />
-		<immagine>Piattaforme/ndswitch</immagine>
+		<immagine>Piattaforme/ndswitch.png</immagine>
 	</console>
 	
 	<console id="4" cprod="Microsoft">
 		<nome>Xbox One</nome>
-		<prezzo>299.99</prezzo>
+		<prezzo>1200</prezzo>
 		<data gg="10" mm="06" aaaa="2014" />
-		<immagine>Piattaforme/xboxone</immagine>
+		<immagine>Piattaforme/xboxone.png</immagine>
 	</console>
 	
 </piattaforme>
