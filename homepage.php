@@ -98,7 +98,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				setTimeout(slideshow,3000);
 			}
 			//Validatori form
-			function formrecensioni(){ // se la recensione è vuota evitiamo di inviare la form al server
+			function formrecensioni(boleano){ // se la recensione è vuota evitiamo di inviare la form al server
 					var textarea= document.forms['form_recensioni']['nuovarecensione'].value;
 					if(textarea == ""){
 						alert("Scrivere la recensione prima di inviarla");
@@ -181,7 +181,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					<label for="console">Console</label><br />
 				</p>
 				<p class="filtri_ordinamento">
-					<strong>Ordinamento:</strong><br />
+					<span style="color:red;"><strong>Ordinamento:</strong></span><br />
 						<input type="checkbox" name="prezzo" onclick="filtro_ordinamento(this)">
 						<label for="prezzo">Prezzo</label><br />
 						<input type="checkbox" name="alfabeto" onclick="filtro_ordinamento(this)">
@@ -190,7 +190,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						<label for="data">Anno di uscita</label><br />
 				</p>
 				<p class="filtri_tipologia">
-					<strong>Tipologia:</strong><br />
+					<span style="color:red;"><strong>Tipologia:</strong></span><br />
 						<input type="checkbox" name="action" onclick="filtro_tipologia(this)">
 						<label for="action">Action</label><br />
 						<input type="checkbox" name="adventure" onclick="filtro_tipologia(this)">
@@ -205,7 +205,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						<label for="fantasy">Fantasy</label><br />
 				</p>
 				<p class="filtri_piattaforma">
-				<strong>Piattaforma:</strong><br />
+				<span style="color:red;"><strong>Piattaforma:</strong></span><br />
 					<input type="checkbox" name="PlayStation" onclick="filtro_piattaforma(this)">
 					<label for="PlayStation">PlayStation</label><br />
 					<input type="checkbox" name="Xbox" onclick="filtro_piattaforma(this)">
@@ -213,7 +213,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					<input type="checkbox" name="Nintendo" onclick="filtro_piattaforma(this)">
 					<label for="Nintendo">Nintendo</label><br />
 				</p>
-				<input type="submit" name="bottone_filtri" value="Filtra" >
+				<input class="bottone_carrello" type="submit" name="bottone_filtri" value="Filtra" >
 			</form>
 			</div>
 		
@@ -275,6 +275,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		<!-- FOOTER SECTION -->
 		<h3 class="footer_title">DICONO DI NOI</h3>
 		<div id="footer"> <!-- Sezione che contiene le recensioni dei clienti ( dicono di noi ... ) oltre che contatti e informazioni sulla sede -->
+		<?php
+		if(isset($_SESSION['login'])){ //possiamo scrivere una recensione solo se siamo loggati
+			echo'
 			<form name="form_recensioni" class="form_recensioni" action="recensione.php" method="POST" onsubmit="return formrecensioni()" >
 				<h4>La tua opinione &egrave importante, proprio per questo abbiamo riservato un area testuale per te al fine di conoscerla: </h4>
 				<img src="stella.png" height="10px" width="10px" alt="not found" /><select name="nuovavalutazione">
@@ -286,7 +289,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				</select><br />
 				<textarea name="nuovarecensione"></textarea><br />
 				<input type="submit" name="bottone_recensione" value="invia">
-			</form>
+			</form>';
+		}
+		?>
 			<div class="boxrecensioni">
 			<?php
 			/*stampiamo le recensioni estraendo le info dal doc xml*/
