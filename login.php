@@ -22,7 +22,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			width:50%;
 			height:100%;
 		}
-		#finestralogin img{
+		#finestralogin a{
 			margin-left:auto;
 			margin-right:auto;
 			border-bottom:solid red 5px;
@@ -32,7 +32,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		#finestralogin form{
 			margin-left:auto;
 			margin-right:auto;
-			padding-bottom:5%;
+			padding-bottom:2%;
 		}
 		#finestralogin form p{
 			color:white;
@@ -94,14 +94,16 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		session_start(); //avviamo la sessione per salvare informazioni in caso di login eseguito
 	?>
 		<div id="finestralogin">
-		<img class="logo" src="logo.png" width="300px" height="35px" alt="logo" />
+		<a href="homepage.php"><img class="logo" src="logo.png" width="300px" height="35px" alt="logo" /></a>
 			<form name="userform" action="login.php" method="POST" onsubmit="return formvalidator()">
 				<p>Username<input type="text" name="username"></p>
 				<p>Password<input type="password" name="password"></p>
 				<p><input class="bottone" type="submit" name="login" value="Login"></p>
 				<hr>
+			</form>
+			<form action="registrazione.php" method="POST">
 				<p><input class="bottone2" type="submit" name="registrati" value="Crea un nuovo account"></p>
-			</form>	
+			</form>
 		</div>
 		
 		<?php
