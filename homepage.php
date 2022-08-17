@@ -108,7 +108,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			}
 			//funzione per bottone carrello
 			function responsivebutton(button){
-				button.value="ok";
+				var nome= button.name;
+				button.value=nome;
+				button.name="bottone";
 				return;
 			}
 			window.onload=slideshow; /*metodo classe window del bom*/
@@ -146,6 +148,19 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 						$doc_piattaforme->loadXML($xmlString_piattaforme);
 						$root_piattaforme = $doc_piattaforme->documentElement;
 						$piattaforme_elements = $root_piattaforme->childNodes;		
+		?>
+		<?php
+		//FUNZIONI AUSILIARIE
+		function cerca($id, $elements){
+			for($i=0; $i< sizeof($elements) ; $i++){
+				$item= $elements->item($i);
+				$currid=$item->getAttribute('id');
+				if($currid==$id)
+					return $item;
+			}
+			return null;
+		}
+		
 		?>
 	</head>
 	
@@ -251,12 +266,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 							//FAREMO STAMPA ATTRAVERSO UNA TABELLA 2X2 CON CONTROLLO SU UN CONTATORE
 								if($contatore_table<4){
 									echo"<td><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong><a href=\"infogiochi.php\" title=\"vedi informazioni\"><img style=\"padding-left:2%\" src=\"info.png\" height=\"15px\" width=\"15px\" alt=\"info\" title=\"vedi informazioni\" /></a></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
-										<input class=\"bottone_carrello\" type=\"submit\" name=\"bottone\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
+										<input class=\"bottone_carrello\" type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
 									$contatore_table++;
 								}
 								else{
 									echo "</tr><tr><td><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong><a href=\"infogiochi.php\" title=\"vedi informazioni\"><img style=\"padding-left:2%\" src=\"info.png\" height=\"15px\" width=\"15px\" alt=\"info\"/></a></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
-										<input class=\"bottone_carrello\" type=\"submit\" name=\"bottone\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
+										<input class=\"bottone_carrello\" type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
 									$contatore_table=1;
 								}
 							}
@@ -318,8 +333,30 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				echo "<br /><strong>$rec_testo_value</strong><br /><span style=\"font-family:Courier; font-size:12px\">Recensione di $rec_username_value</span></p>"; 
 				$conta_stelle=0;//reinizializziamo il contatore
 			}
+			
+			///////AGGIUNTA AL CARRELLO
 			if(isset($_POST['bottone'])){
-				echo $_POST['bottone'];
+				if(isset($_SESSION['login'])){
+					//se è stato selezionato qualcosa lo aggiungiamo al carrello
+					$id=$_POST['bottone'];
+					//cerchiamo l'id nell'array (gli id dispari saranno riferiti alle console mentre quelli pari ai videogiochi)
+					if($id %2 == 0){
+						$risultato=cerca($id, $videogiochi_elements);
+					}
+					else{
+						$risultato=cerca($id, $piattaforme_elements);
+					}
+					if($risultato!=null){
+						array_push($_SESSION['carrello'],$risultato);
+						echo "<script>alert(\"Elemento aggiunto al carrello\");</script>";
+					}
+					else{
+						echo "<script>alert(\"Errore inaspettato\");</script>";
+					}
+				}
+				else{ //caso in cui non siamo loggati
+					echo "<script>alert(\"Azione non consentita login necessario\");</script>";
+				}
 			}
 			
 			?>
