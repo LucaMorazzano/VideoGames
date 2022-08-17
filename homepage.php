@@ -106,6 +106,11 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					}
 					else return true;
 			}
+			//funzione per bottone carrello
+			function responsivebutton(button){
+				button.value="ok";
+				return;
+			}
 			window.onload=slideshow; /*metodo classe window del bom*/
 		</script>
 		<!-- ESTRAZIONE ELEMENTI ROOT DAI VARI DOCUMENTI XML -->
@@ -222,7 +227,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				<?php
 					$contatore_table=0; //contatore per modalità stampa a schermo catalogo
 						//stampiamo a schermo i videogiochi estraendo le informazioni necessarie
-						echo "<form class=\"catalogo\" action=\"aggiungicarrello.php\" method=\"POST\" >";
+						echo "<form name=\"catalogo\" class=\"catalogo\" action=\"homepage.php\" method=\"POST\" >";
 						echo "<table border=\"0px\" cellspacing=\"30px\" ><tr>";
 						for($i=0; $i< sizeof($videogiochi_elements) ; $i++){
 							///////////ESTRAZIONE VIDEOGIOCHI//////////////////
@@ -246,12 +251,12 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 							//FAREMO STAMPA ATTRAVERSO UNA TABELLA 2X2 CON CONTROLLO SU UN CONTATORE
 								if($contatore_table<4){
 									echo"<td><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong><a href=\"infogiochi.php\" title=\"vedi informazioni\"><img style=\"padding-left:2%\" src=\"info.png\" height=\"15px\" width=\"15px\" alt=\"info\" title=\"vedi informazioni\" /></a></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
-										<input class=\"bottone_carrello\" type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\"></p></td>";
+										<input class=\"bottone_carrello\" type=\"submit\" name=\"bottone\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
 									$contatore_table++;
 								}
 								else{
 									echo "</tr><tr><td><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong><a href=\"infogiochi.php\" title=\"vedi informazioni\"><img style=\"padding-left:2%\" src=\"info.png\" height=\"15px\" width=\"15px\" alt=\"info\"/></a></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
-										<input class=\"bottone_carrello\" type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\"></p></td>";
+										<input class=\"bottone_carrello\" type=\"submit\" name=\"bottone\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
 									$contatore_table=1;
 								}
 							}
@@ -312,6 +317,9 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 				echo "</nobr>";
 				echo "<br /><strong>$rec_testo_value</strong><br /><span style=\"font-family:Courier; font-size:12px\">Recensione di $rec_username_value</span></p>"; 
 				$conta_stelle=0;//reinizializziamo il contatore
+			}
+			if(isset($_POST['bottone'])){
+				echo $_POST['bottone'];
 			}
 			
 			?>

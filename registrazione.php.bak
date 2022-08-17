@@ -55,7 +55,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			#finestraregistrazione .bottone:hover{
 				opacity:100%;
 			}
-			#finestraregistrazione img,a{
+			#finestraregistrazione a{
 				margin-left:auto;
 				margin-right:auto;
 				border-bottom:solid red 5px;
@@ -66,6 +66,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		
 		<script>
 			function formvalidator(){
+				return false;
 				var nome =document.forms['userform']['nome'].value;
 				var cognome =document.forms['userform']['cognome'].value;
 				var e-mail =document.forms['userform']['e-mail'].value;
