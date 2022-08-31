@@ -1,0 +1,164 @@
+body{
+	display:flex;
+	flex-direction:column;
+}
+/*INIZIO HEADER*/
+
+#header{
+	display:flex;
+	background-color:#1e1e1e;
+	border-radius: 20px 20px 20px 20px;
+	justify-content:space-between;
+	align-items:center;
+	/*impostiamo menu fisso*/
+	width:99%;
+	position:fixed;
+	margin:auto;
+}
+.navbar{
+	list-style-type:none;
+	margin-right:15%;
+}
+.navbar a{
+	text-decoration:none;
+	color:white;
+}
+.navbar li{
+	display:inline; /*disposizione orizzontale della lista*/
+	padding-right:10%;
+	color:white;
+	font-size:25px;
+	font-family:"Courier";
+}
+.navbar a:hover{
+	color:red;
+}
+/*FINE HEADER*/
+.platform{
+	flex:5 5 100px;
+	margin-top:6%;
+}
+.platform ul{
+	list-style-type:none;
+	margin:auto;
+	border-bottom:solid red 5px;
+	border-radius:20px 20px 20px 20px;
+	width:70%;
+}
+.platform li{
+	display:inline;
+	padding-right:10%;
+	padding-left:10%;
+}
+.platform a{
+	opacity:60%;
+}
+.platform a:hover{
+	opacity:100%;
+}
+.catalogo{
+	width:100%;
+	margin-top:6%;
+	align-items:center;
+}
+
+.catalogo .giochi{
+	list-style-type:none;
+}
+.giochi li{
+	display:inline;
+	align-items:center;
+	justify-content:space-around;
+}
+.giochi input{
+	background-color: #a61022;
+	color: white;
+	font-size: 15px;
+	font-family:Arial;
+	padding: 10px 10px;
+	border: none;
+	border-radius: 5px;
+	opacity:75%;
+}
+.giochi input:hover{
+	opacity:100%;
+}
+.slideshow{
+	border: solid thin black;
+	height:400px;
+	width:70%;
+	margin-top:6%;
+	margin-right:auto;
+	margin-left:auto;
+}
+.slideshow img{
+	width:100%;
+}
+.slideshow input{
+	position: absolute;
+	top: 50%;
+	left:40%;
+	opacity:50%;
+	background-color: #a61022;
+	color: white;
+	font-size: 20px;
+	font-family:Arial;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 5px;
+}
+.slideshow input:hover{
+	opacity:100%;
+}
+
+
+#footer{}
+
+@media all and (max-width: 800px){ /*da una disposizione in colonna mettendo in evidenza la il contenuto principale quando si riducono le dimensioni della finestra di visualizzazione*/
+	#header{
+		flex-direction:column;
+		background-color:white;
+		position:absolute;
+	}
+	#header img{
+		border-bottom:solid black;
+		border-radius:20px 20px 20px 20px;
+		padding:2%;
+	}
+	.navbar{
+		margin:auto;
+		padding-top:2%;
+	}
+	.navbar li{
+		display:flex;
+		justify-content:center;
+	}
+	.navbar a{
+		color:black;
+	}
+	.navbar a:hover{
+		color:white;
+		padding:3%;
+		background-color:#a61022;
+		border-radius:20px 20px 20px 20px;
+	}
+	.slideshow{
+		margin-right:auto;
+		margin-left:auto;
+		margin-top:35%;
+	}
+	.slideshow input{
+		margin-top:20%;
+		margin-right:auto;
+		margin-left:auto;
+	}
+	.platform{
+		flex-direction:column;
+		width:40%;
+		margin-left:4%;
+	}
+	.platform ul{
+		border:0px;
+	}
+	
+}

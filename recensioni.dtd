@@ -1,5 +1,0 @@
-<!ELEMENT recensioni (recensione+)>
-	<!ELEMENT recensione (username, valutazione, testo)>
-	<!ELEMENT username #PCDATA>
-	<!ELEMENT valutazione 1|2|3|4|5 (#PCDATA)>
-	<!ELEMENT testo #PCDATA>
