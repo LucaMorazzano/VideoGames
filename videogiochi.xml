@@ -2,7 +2,7 @@
 <!DOCTYPE telefoni SYSTEM "videogiochi.dtd">
 
 <videogiochi>
-	<gioco id="345" console="Play Station">
+	<gioco id="344" console="Play Station">
 		<nome>Grand Theft Auto V</nome>
 		<immagine>Games/gta5.png</immagine>
 		<tipologia value="Action" />
@@ -10,7 +10,7 @@
 		<data gg="12" mm="01" aaaa="2014" />
 	</gioco>
 	
-	<gioco id="315" console="Play Station">
+	<gioco id="312" console="Play Station">
 		<nome>Fifa 22 </nome>
 		<immagine>Games/fifa22.png</immagine>
 		<tipologia value="Sport" />
@@ -18,7 +18,7 @@
 		<data gg="12" mm="09" aaaa="2021" />
 	</gioco>
 	
-	<gioco id="321" console="Play Station">
+	<gioco id="322" console="Play Station">
 		<nome>Battlefield V</nome>
 		<immagine>Games/bf5.png</immagine>
 		<tipologia value="FPS" />
@@ -34,7 +34,7 @@
 		<data gg="30" mm="09" aaaa="2021" />
 	</gioco>
 	
-	<gioco id="311" console="Xbox">
+	<gioco id="310" console="Xbox">
 		<nome>Halo Infinite</nome>
 		<immagine>Games/halo.png</immagine>
 		<tipologia value="FPS" />
@@ -42,7 +42,7 @@
 		<data gg="14" mm="03" aaaa="2015" />
 	</gioco>
 	
-	<gioco id="323" console="Play Station">
+	<gioco id="326" console="Play Station">
 		<nome>Hitman 2</nome>
 		<immagine>Games/hitman2.png</immagine>
 		<tipologia value="Action" />
@@ -66,7 +66,7 @@
 		<data gg="15" mm="02" aaaa="2006"/>
 	</gioco>
 	
-	<gioco id="319" console="Xbox">
+	<gioco id="336" console="Xbox">
 		<nome>Super Paper Mario</nome>
 		<immagine>Games/super_paper_mario.png</immagine>
 		<tipologia value="Arcade" />

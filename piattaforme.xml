@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE telefoni SYSTEM "piattaforme.dtd">
+
+<piattaforme>
+	<console id="1" cprod="Sony">
+		<nome>Play Station 4</nome>
+		<prezzo>1200</prezzo>
+		<data gg="10" mm="12" aaaa="2014" />
+		<immagine>Piattaforme/ps4.png</immagine>
+	</console>
+	
+	<console id="3" cprod="Sony">
+		<nome>Play Station 5</nome>
+		<prezzo>2000</prezzo>
+		<data gg="10" mm="12" aaaa="2020" />
+		<immagine>Piattaforme/ps5.png</immagine>
+	</console>
+	
+	<console id="5" cprod="Nintendo">
+		<nome>Nintendo Switch</nome>
+		<prezzo>1000</prezzo>
+		<data gg="10" mm="12" aaaa="2019" />
+		<immagine>Piattaforme/ndswitch.png</immagine>
+	</console>
+	
+	<console id="7" cprod="Microsoft">
+		<nome>Xbox One</nome>
+		<prezzo>1200</prezzo>
+		<data gg="10" mm="06" aaaa="2014" />
+		<immagine>Piattaforme/xboxone.png</immagine>
+	</console>
+	
+</piattaforme>

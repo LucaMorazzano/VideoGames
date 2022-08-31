@@ -1,0 +1,183 @@
+body{
+	display:flex;
+	text-align:center; /*il contenuto della pagina avrà un allineamento del testo centrale per mantenere comunque un layout disposto a colonne*/	
+	flex-direction:column;		/*impostiamo il body in modo da avere un layout a colonne*/
+}
+
+
+/*CLASSE MAIN CHE CONTIENE IL CONTENUTO AL CENTRO DELLA PAGINA OVVERO LE SEZIONI LEFT, RIGHT E CENTER*/
+.main{
+	display:flex; /*impostiamo display flex in modo da avere una maggiore libertà sul posizionamento degli elementi, in questo esercizio viene usato 
+						principalmente per mettere in evidenza il contenuto principale rispetto a le sezioni left e right*/				
+	padding:1%; /*diamo un lieve padding in modo da non avere */
+}
+/*FINE MAIN*/
+
+
+/*HEADER SECTION*/
+#header{
+	display:flex;
+	background-color:#1e1e1e;
+	border-radius: 20px 20px 20px 20px;
+	justify-content:space-between;
+	align-items:center;
+}
+.navbar{
+	list-style-type:none;
+	margin-right:15%;
+}
+.navbar a{
+	text-decoration:none;
+	color:white;
+}
+.navbar li{
+	display:inline; /*disposizione orizzontale della lista*/
+	padding-right:10%;
+	color:white;
+	font-size:25px;
+	font-family:Courier;
+}
+.navbar a:hover{
+	color:red;
+}
+
+/*FINE HEADER*/
+
+
+/*MAIN-CONTENT SECTION*/
+#center{
+	color:black;
+	flex:5 5 100px;
+	height:720px;
+	overflow:scroll
+	
+}
+#center .catalogo table{
+	margin-right:auto;
+	margin-left:auto;
+}
+.bottone_carrello{
+	background-color: #a61022;
+	color: white;
+	font-family:Arial;
+	padding: 7px 7px;
+	border: none;
+	border-radius: 5px;
+	opacity:85%;
+}
+.bottone_carrello:hover{
+	opacity:100%;
+}
+/*FINE MAIN-CONTENT*/
+
+
+/*LEFT SECTION*/
+#left{
+	color:white;
+	background-color:#1e1e1e;
+	border-radius: 20px 20px 20px 20px;
+	text-align:justify;
+	padding:1%;
+	flex:1 1 100px;
+}
+#left h3{
+	color:red;
+}
+/*SEZIONE RIGHT*/
+#right{
+	padding:1%;
+	flex:1 1 100px;
+}
+#right .bottoneofferte{
+	position:absolute;
+	top:400px;
+	right:90px;
+	opacity:50%;
+	background-color: #a61022;
+	color: white;
+	font-family:Arial;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 5px;
+}
+#right .bottoneofferte:hover{
+	opacity:100%;
+}
+#right img{
+	border-radius: 20px 20px 20px 20px;
+}
+/*FINE RIGHT*/
+
+
+/*SEZIONE FOOTER*/
+.footer_title{
+	color:white;
+	border-radius: 20px 20px 20px 20px;
+	border-top:solid green;
+	border-bottom:solid blue;
+	padding: 1%;
+	font-family:Arial;
+	background-color:#1e1e1e;
+}
+#footer{
+	background-color:white;
+	color:black;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+}
+#footer .form_recensioni{
+	text-align:justify;
+	margin-right:5%;
+}
+#footer .form_recensioni h4{
+	width:250px;
+}
+.form_recensioni select{
+	margin-bottom:2%;
+}
+#footer .boxrecensioni{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	overflow:scroll;
+}
+#footer .boxrecensioni .recensione{
+	color:black;
+	margin-left:5%;
+}
+
+/*FINE FOOTER*/
+
+
+/*qui utilizziamo una media query per il display, quando le dimensioni del display o della finestra di visualizzazione scendono sotto gli 800px di larghezza
+allora il contenuto si disponde lungo una sola colonna avente tante righe quanti sono i vari div utilizzati per creare il layout iniziale*/
+@media all and (max-width: 800px){ /*da una disposizione in colonna mettendo in evidenza la il contenuto principale quando si riducono le dimensioni della finestra di visualizzazione*/
+	.main{
+		flex-direction:column; /*impostiamo il layout degli elementi della classe main a colonna*/
+	}
+	#center{
+		padding:5%; /*padding per non avere il contenuto di questa sezione molto vicino alle estremità*/
+	}
+	#header{
+		flex-direction:column; /*in questo modo gli elementi dell'header si disporranno in colonna al rimpicciolirsi della finestra di visualizzazione*/
+		align-items:center;
+	}
+}
+
+/*STILIZZAZIONE SCROOLLBAR*/
+::-webkit-scrollbar{
+	width:10px;
+	height:10px;
+}
+::-webkit-scrollbar-track {
+  background: white;
+}
+::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a61022;
+}
+
