@@ -107,7 +107,7 @@ body{
 				$elements = $root->childNodes;
 				
 				echo "<form class=\"giochi\" action=\"carrello.php\" method=\"POST\">";
-				foreach($_SESSION['carrello'] as $videogioco){
+				foreach($_SESSION['carrello'] as $id){
 					//cerchiamo ora nel file xml i telefoni aventi tali id
 					for($i=0; $i<sizeof($elements); $i++){
 						$gioco=$elements->item($i);

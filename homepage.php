@@ -1,76 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?php 
+	session_start();
+?>
 <!DOCTYPE html
 PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<?php
-	session_start();
-?>
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-	
 	<head>
 		<title>Home</title>
-		<style>
-			@import url("stile1.css");
+		<style type="text/css">
+body{
+	display:flex;
+	flex-direction:column;
+}
+/*INIZIO HEADER*/
+
+#header{
+	display:flex;
+	background-color:#1e1e1e;
+	border-radius: 20px 20px 20px 20px;
+	justify-content:space-between;
+	align-items:center;
+	/*impostiamo menu fisso*/
+	width:99%;
+	position:fixed;
+	margin:auto;
+}
+.navbar{
+	list-style-type:none;
+	margin-right:15%;
+}
+.navbar a{
+	text-decoration:none;
+	color:white;
+}
+.navbar li{
+	display:inline; /*disposizione orizzontale della lista*/
+	padding-right:10%;
+	color:white;
+	font-size:25px;
+	font-family:Courier;
+}
+.navbar a:hover{
+	color:red;
+}
+/*FINE HEADER*/
+.platform{
+	flex:5 5 100px;
+	margin-top:6%;
+}
+.platform ul{
+	list-style-type:none;
+	margin:auto;
+	border-bottom:solid red 5px;
+	border-radius:20px 20px 20px 20px;
+	width:70%;
+}
+.platform li{
+	display:inline;
+	padding-right:10%;
+	padding-left:10%;
+}
+.platform a{
+	opacity:60%;
+}
+.platform a:hover{
+	opacity:100%;
+}
+/*INIZIO CATALOGO SECTION*/
+.catalogo{
+	width:100%;
+	margin-top:6%;
+	align-items:center;
+	background-color:#1e1e1e;
+	border-radius:20px 20px 20px 20px;
+	color:white;
+}
+
+.catalogo .giochi{
+	display:flex;
+	align-items:center;
+	overflow:scroll;
+	padding:2%;
+	padding-top:1%;
+}
+.giochi input{
+	display:inline;
+	background-color: #a61022;
+	color: white;
+	font-size: 15px;
+	font-family:Arial;
+	padding: 10px 10px;
+	margin-top:10%;
+	border: none;
+	border-radius: 5px;
+	opacity:75%;
+}
+.giochi input:hover{
+	opacity:100%;
+}
+.giochi p{
+	font-family:Arial;
+	font-size:20px;
+	color:white;
+	padding:1%;
+}
+/*PERSONALIZZAZIONE SCROLLBAR*/
+::-webkit-scrollbar{
+	width:5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a61022;
+}
+/*FINE SCROLLBAR*/
+.slideshow{
+	border: solid thin black;
+	height:400px;
+	width:70%;
+	margin-top:6%;
+	margin-right:auto;
+	margin-left:auto;
+}
+.slideshow img{
+	width:100%;
+}
+.slideshow input{
+	position: absolute;
+	top: 50%;
+	left:40%;
+	opacity:50%;
+	background-color: #a61022;
+	color: white;
+	font-size: 20px;
+	font-family:Arial;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 5px;
+}
+.slideshow input:hover{
+	opacity:100%;
+}
+.catalogo h3{
+	font-family:Courier;
+	margin-left:15px;
+	padding-top:15px;
+	color:#a61022;
+}
+.selection{
+	font-family:Arial;
+	margin-left:15px;
+}
+.selection input{
+	margin-left:10px;
+	opacity:80%;
+	background-color: #a61022;
+	color: white;
+	font-family:Arial;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+}
+.selection input:hover{
+	opacity:100%;
+}
+
+/*FINE SEZIONE CATALOGO*/
+
+#footer{}
+
+@media all and (max-width: 800px){ /*da una disposizione in colonna mettendo in evidenza la il contenuto principale quando si riducono le dimensioni della finestra di visualizzazione*/
+	#header{
+		flex-direction:column;
+		background-color:white;
+		position:absolute;
+	}
+	#header img{
+		border-bottom:solid black;
+		border-radius:20px 20px 20px 20px;
+		padding:2%;
+	}
+	.navbar{
+		margin:auto;
+		padding-top:2%;
+	}
+	.navbar li{
+		display:flex;
+		justify-content:center;
+	}
+	.navbar a{
+		color:black;
+	}
+	.navbar a:hover{
+		color:white;
+		padding:3%;
+		background-color:#a61022;
+		border-radius:20px 20px 20px 20px;
+	}
+	.slideshow{
+		margin-right:auto;
+		margin-left:auto;
+		margin-top:35%;
+	}
+	.slideshow input{
+		margin-top:20%;
+		margin-right:auto;
+		margin-left:auto;
+	}
+	.platform{
+		flex-direction:column;
+		width:40%;
+		margin-left:4%;
+	}
+	.platform ul{
+		border:0px;
+	}
+	
+}
 		</style>
+		<?php //FUNZIONI PHP
+			function ordineCrescente($array, $mode){ //riceve come parametri i prodotti e cosa ordinare
+				
+				
+			}
+			function ordineDecrescente($array, $mode){
+				
+			}
+		?>
 		<script>
 		var i=0;
-		//VARIABILI PER FILTRO CATALOGO
-		var conta_prodotti=0;
-		var conta_ordinamento=0;
-		var conta_tipologia=0;
-		var conta_piattaforma=0;
-		//funzioni per filtro catalogo 
-			function filtro_ordinamento(prod){
-				if(prod.checked){
-					conta_ordinamento++;
-					if(conta_ordinamento>1){
-						alert("Operazione non consentita è possibile esprimere un'unica preferenza per ogni categoria");
-						prod.checked=false;
-						conta_ordinamento--;
-					}
-				}
-				else{
-					if(conta_ordinamento>0){
-						conta_ordinamento--;
-						prod.checked=false;
-					}
-				}
+			function carrello(nome){
+				alert(nome + "aggiunto al carrello");
 			}
-			function filtro_tipologia(prod){
-				if(prod.checked){
-					conta_tipologia++;
-					if(conta_tipologia>1){
-						alert("Operazione non consentita è possibile esprimere un'unica preferenza per ogni categoria");
-						prod.checked=false;
-						conta_tipologia--;
-					}
-				}
-				else{
-					if(conta_tipologia>0){
-						conta_tipologia--;
-						prod.checked=false;
-					}
-				}
-			}
-			function filtro_piattaforma(prod){
-				if(prod.checked){
-					conta_piattaforma++;
-					if(conta_piattaforma>1){
-						alert("Operazione non consentita è possibile esprimere un'unica preferenza per ogni categoria");
-						prod.checked=false;
-						conta_piattaforma--;
-					}
-				}
-				else{
-					if(conta_piattaforma>0){
-						conta_piattaforma--;
-						prod.checked=false;
-					}
-				}
-			}
-			//Slideshow
 			function slideshow(){
 				var img =["Slideshow/img1.jpg","Slideshow/img2.jpg","Slideshow/img3.jpg","Slideshow/img4.jpg"];
 				
@@ -81,87 +249,23 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 					i=0;
 				setTimeout(slideshow,3000);
 			}
-			//Validatori form
-			function formrecensioni(boleano){ // se la recensione è vuota evitiamo di inviare la form al server
-					var textarea= document.forms['form_recensioni']['nuovarecensione'].value;
-					if(textarea == ""){
-						alert("Scrivere la recensione prima di inviarla");
-						return false;
-					}
-					else return true;
-			}
-			//funzione per bottone carrello
-			function responsivebutton(button){
-				var nome= button.name;
-				button.value=nome;
-				button.name="bottone";
-				return;
-			}
 			window.onload=slideshow; /*metodo classe window del bom*/
 		</script>
-		<!-- ESTRAZIONE ELEMENTI ROOT DAI VARI DOCUMENTI XML -->
-		<?php
-		/*estraiamo informazioni dai file xml con metodo dom*/
-		//VIDEOGIOCHI.XML
-						$xmlString_videogiochi=""; //conterra il contenuto del file xml
-						foreach ( file("videogiochi.xml") as $node_videogiochi ) {
-							$xmlString_videogiochi .= trim($node_videogiochi); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
-						}
-						$doc_videogiochi=new DomDocument(); //inizializziamo il documento
-						//estraiamo i videogiochi e salviamo le informazioni nelle variabili
-						$doc_videogiochi->loadXML($xmlString_videogiochi);
-						$root_videogiochi = $doc_videogiochi->documentElement;
-						$videogiochi_elements = $root_videogiochi->childNodes;	
-		//RECENSIONI.XML
-						$xmlString_recensioni=""; //conterra il contenuto del file xml
-						foreach ( file("recensioni.xml") as $node_recensioni ) {
-							$xmlString_recensioni .= trim($node_recensioni); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
-						}
-						$doc_recensioni=new DomDocument(); //inizializziamo il documento
-						//estraiamo i videogiochi e salviamo le informazioni nelle variabili
-						$doc_recensioni->loadXML($xmlString_recensioni);
-						$root_recensioni = $doc_recensioni->documentElement;
-						$recensioni_elements = $root_recensioni->childNodes;	
-		//PIATTAFORME.XML
-					$xmlString_piattaforme=""; //conterra il contenuto del file xml
-						foreach ( file("piattaforme.xml") as $node_piattaforme ) {
-							$xmlString_piattaforme .= trim($node_piattaforme); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
-						}
-						$doc_piattaforme=new DomDocument(); //inizializziamo il documento
-						//estraiamo i videogiochi e salviamo le informazioni nelle variabili
-						$doc_piattaforme->loadXML($xmlString_piattaforme);
-						$root_piattaforme = $doc_piattaforme->documentElement;
-						$piattaforme_elements = $root_piattaforme->childNodes;		
-		?>
-		<?php
-		//FUNZIONI AUSILIARIE
-		function cerca($id, $elements){
-			for($i=0; $i< sizeof($elements) ; $i++){
-				$item= $elements->item($i);
-				$currid=$item->getAttribute('id');
-				if($currid==$id)
-					return $item;
-			}
-			return null;
-		}
-		
-		?>
 	</head>
-	
-	<body>
-		<div id="header"> <!-- Sezione che contiene il menu di navigazione del sito -->
+	<body>	
+		<div id="header">
 			<a style="padding-left:2%" href="homepage.php"><img src="logo.png" height="35px" width="300px" alt="logo" /></a>
 			<ul class="navbar">
 				<nobr>
 				<?php
 				if(isset($_SESSION['login'])){
 					require_once("connection.php");
-					echo "<li><a href=\"account.php\">ACCOUNT</a></li>";
-					echo "<li><a href=\"crediti.php\">CREDITI</a></li>";
+					echo "<li><a href=\"\">ACCOUNT</a></li>";
+					echo "<li><a href=\"\">CREDITI</a></li>";
 					echo "<li><a href=\"carrello.php\">CARRELLO</a></li>";
 				}
 				?>
-				<li><a href="faq.php">FAQ</a></li>
+				<li><a href="">FAQ</a></li>
 				<?php
 					if(isset($_SESSION['login'])){
 						echo "<li><a href=\"logout.php\">LOGOUT</a></li>";
@@ -174,56 +278,84 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 			</ul>
 		</div>
 		
-		<div class="main">
-			<div id="left"> <!-- Sezione che contiene un menu per modificare la visualizzazione del catalogo -->
-			<form action="homepage.php" method="POST" class="filtra">
-				<h3>FILTRA PER</h3><hr>
-				<p class="filtri_ordinamento">
-						<input type="checkbox" name="prezzo" onclick="filtro_ordinamento(this)">
-						<label for="prezzo">Prezzo</label><br />
-						<input type="checkbox" name="alfabeto" onclick="filtro_ordinamento(this)">
-						<label for="alfabeto">Ordine alfabetico</label><br />
-						<input type="checkbox" id="data" onclick="filtro_ordinamento(this)">
-						<label for="data">Anno di uscita</label><br />
-				</p>
-				<p class="filtri_tipologia">
-					<span style="color:red;"><strong>Tipologia:</strong></span><br />
-						<input type="checkbox" name="action" onclick="filtro_tipologia(this)">
-						<label for="action">Action</label><br />
-						<input type="checkbox" name="adventure" onclick="filtro_tipologia(this)">
-						<label for="adventure">Adventure</label><br />
-						<input type="checkbox" name="sport" onclick="filtro_tipologia(this)">
-						<label for="sport">Sport</label><br />
-						<input type="checkbox" name="arcade" onclick="filtro_tipologia(this)">
-						<label for="arcade">Arcade</label><br />
-						<input type="checkbox" name="fps" onclick="filtro_tipologia(this)">
-						<label for="fps">Fps</label><br />
-						<input type="checkbox" name="fantasy" onclick="filtro_tipologia(this)">
-						<label for="fantasy">Fantasy</label><br />
-				</p>
-				<p class="filtri_piattaforma">
-				<span style="color:red;"><strong>Piattaforma:</strong></span><br />
-					<input type="checkbox" name="PlayStation" onclick="filtro_piattaforma(this)">
-					<label for="PlayStation">PlayStation</label><br />
-					<input type="checkbox" name="Xbox" onclick="filtro_piattaforma(this)">
-					<label for="Xbox">Xbox</label><br />
-					<input type="checkbox" name="Nintendo" onclick="filtro_piattaforma(this)">
-					<label for="Nintendo">Nintendo</label><br />
-				</p>
-				<input class="bottone_carrello" type="submit" name="bottone_filtri" value="Filtra" >
-			</form>
-			</div>
-		
-		
-			<div id="center"> <!-- Sezione che contiene il catalogo dei prodotti -->
-				<?php
-					$contatore_table=0; //contatore per modalità stampa a schermo catalogo
+				<div class="slideshow">
+					<img name="slider" height="400px" width="1000px" alt="offerte" />
+					<form action="#offerte"> 
+						<input type="submit" class="bottone_offerte" value="Scopri le nostre offerte">
+					</form>
+				</div>
+				
+				<div class="platform">
+					<ul>
+						<nobr><li><a href="" title="PlayStation"><img src="Console/ps4.png" height="100px" width="180px" alt="console" /></a></li>
+						<li><a href="" title="Nintendo"><img src="Console/ndswitch.png" height="110px" width="110px" alt="console" /></a></li>
+						<li><a href="" title="Xbox"><img src="Console/xbox.png" height="100px" width="100px" alt="console" /></a></li></nobr>
+					</ul>
+				</div>
+				
+				<a name="offerte">
+				<div class="viewbar">
+					
+				</div>
+				<div class="catalogo">
+					<form action="homepage.php #offerte" method="POST" > <!-- FORM PER STABILIRE ORDINAMENTO CATALOGO -->
+						<h3>MODALIT&Agrave VISUALIZZAZIONE CATALOGO:</h3>
+						<p class="selection">
+						Prodotti:<select name="prodotti">
+							<option value="prodottidefault">tutti</option>
+							<option value="videogiochi">Videogiochi</option>
+							<option value="console">Console</option>
+						</select>
+						Prezzo: <select name="prezzo">
+							<option value="prezzodefault">default</option>
+							<option value="prezzocrescente">crescente</option>
+							<option value="prezzodecrescente">decrescente</option>
+						</select>
+						Tipologia: <select name="tipologia"> <!-- tipologie definite nella dtd come attributi -->
+							<option value="tipologiadefault">tutti</option>
+							<option value="Action">Action</option>
+							<option value="Adventure">Adventure</option>
+							<option value="Sport">Sport</option>
+							<option value="Arcade">Arcade</option>
+							<option value="FPS">Fps</option>
+							<option value="Fantasy">Fantasy</option>
+						</select>
+						Anno di uscita: <select name="data">
+							<option value="datadefault">default</option>
+							<option value="datacrescente">crescente</option>
+							<option value="datadecrescente">decrescente</option>
+						</select>
+						Piattaforma: <select name="piattaforma">
+							<option value="piattaformadefault">tutte</option>
+							<option value="PlayStation">PlayStation</option>
+							<option value="Xbox">Xbox</option>
+							<option value="Nintendo">Nintendo</option>
+						</select>
+						Ordine alfabetico: <select name="alfabeto">
+							<option value="alfabetodefault">default</option>
+							<option value="alfabetocrescente">crescente</option>
+							<option value="alfabetodecrescente">crescente</option>
+						</select>
+							<input type="submit" name="viewbutton" value="mostra">
+						</select></p>
+					</form>
+				
+					<?php
+					/*estraiamo informazioni dai file xml con metodo dom*/
+						$xmlString=""; //conterra il contenuto del file xml
+						foreach ( file("videogiochi.xml") as $node ) {
+							$xmlString .= trim($node); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
+						}
+						$doc=new DomDocument(); //inizializziamo il documento
+						//estraiamo i videogiochi e salviamo le informazioni nelle variabili
+						$doc->loadXML($xmlString);
+						$root = $doc->documentElement;
+						$elements = $root->childNodes;
 						//stampiamo a schermo i videogiochi estraendo le informazioni necessarie
-						echo "<form name=\"catalogo\" class=\"catalogo\" action=\"homepage.php\" method=\"POST\" >";
-						echo "<table border=\"0px\" cellspacing=\"30px\" ><tr>";
-						for($i=0; $i< sizeof($videogiochi_elements) ; $i++){
+						echo "<form class=\"giochi\" action=\"aggiungicarrello.php\" method=\"POST\" >";
+						for($i=0; $i< sizeof($elements) ; $i++){
 							///////////ESTRAZIONE VIDEOGIOCHI//////////////////
-							$gioco=$videogiochi_elements->item($i);
+							$gioco=$elements->item($i);
 							$id=$gioco->getAttribute('id');
 							$console=$gioco->getAttribute('console'); //piattaforma su cui è disponibile il gioco
 							$nome= $gioco->firstChild;
@@ -239,110 +371,73 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 							$giorno= $data->getAttribute('gg');
 							$mese= $data->getAttribute('mm');
 							$anno= $data->getAttribute('aaaa');
-							if(!isset($_POST['bottone_filtri'])){ //visualizzazione default
-							//FAREMO STAMPA ATTRAVERSO UNA TABELLA 2X2 CON CONTROLLO SU UN CONTATORE
-								if($contatore_table<4){
-									echo"<td><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong><a href=\"infogiochi.php\" title=\"vedi informazioni\"><img style=\"padding-left:2%\" src=\"info.png\" height=\"15px\" width=\"15px\" alt=\"info\" title=\"vedi informazioni\" /></a></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
-										<input class=\"bottone_carrello\" type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
-									$contatore_table++;
-								}
-								else{
-									echo "</tr><tr><td><img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong><a href=\"infogiochi.php\" title=\"vedi informazioni\"><img style=\"padding-left:2%\" src=\"info.png\" height=\"15px\" width=\"15px\" alt=\"info\"/></a></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
-										<input class=\"bottone_carrello\" type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\" onclick=\"responsivebutton(this)\"></p></td>";
-									$contatore_table=1;
-								}
+							if(!isset($_POST['viewbutton']) || ($_POST['prodotti']=="prodottidefault" && $_POST['prezzo']=="prezzodefault" && $_POST['tipologia']=="tipologiadefault" && $_POST['data']=="datadefault" && $_POST['piattaforma']=="piattaformadefault" && $_POST['alfabeto'] == "alfabetodefault" )){ //condizione default
+								echo"<img src=\"$immaginevalue\" height=\"170px\" width=\"150px\" alt=\"game\" /><nobr><p><strong>$nomevalue</strong></nobr> <br />$prezzovalue<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
+									<input type=\"submit\" name=\"$id\" value=\"Aggiungi al carrello\"></p>";
 							}
-							else{ //vari casi per visualizzazione catalogo
-								echo "mod stampa";
+							else{/*varie modalità visualizzazione*/
+								if($_POST['prezzo']=="prezzocrescente")
+									echo "prezzo";
 							}
 						}
-						echo "</tr></table>"
-				?>
-			</div>
+						///////////ESTRAZIONE PIATTAFORME//////////////////
+						$xmlString1=""; //conterra il contenuto del file xml
+						foreach ( file("piattaforme.xml") as $node1 ) {
+							$xmlString1 .= trim($node1); //attraverso la funzione trim salviamo il contenuto senza spazi vuoti
+						}
+						$doc1=new DomDocument(); //inizializziamo il documento
+						//estraiamo i videogiochi e salviamo le informazioni nelle variabili
+						$doc1->loadXML($xmlString1);
+						$root1 = $doc1->documentElement;
+						$elements1 = $root1->childNodes;
+						for($i=0; $i< sizeof($elements1) ; $i++){
+							///////////ESTRAZIONE VIDEOGIOCHI//////////////////
+							$console=$elements1->item($i);
+							$id1=$console->getAttribute('id');
+							$cprod=$console->getAttribute('cprod');
+							$nome1= $console->firstChild;
+							$nome1value= $nome1->textContent;
+							$prezzo1=$nome1->nextSibling;
+							$prezzo1value=(double)($prezzo1->textContent); //casting necessario
+							$data1= $prezzo1->nextSibling;
+							//estraiamo gli attributi della data di uscita 
+							$giorno1= $data1->getAttribute('gg');
+							$mese1= $data1->getAttribute('mm');
+							$anno1= $data1->getAttribute('aaaa');
+							$immagine1= $console->lastChild;
+							$immagine1value= $immagine1->textContent;
+							echo"<img src=\"$immagine1value\" height=\"170px\" width=\"250px\" alt=\"game\" /><nobr><p><strong>$nome1value</strong></nobr> <br />$prezzo1value<img style=\"padding-left:2%\" src=\"crediti.png\" height=\"15px\" width=\"15px\" alt=\"crediti\" /><br />
+									<input type=\"submit\" name=\"id\" value=\"$id1\"></p>";
+						}
+						echo "</form>";
+					?>
+					
+					<?php
+					//in questo blocco php gestiremo l'aggiunta al carrello dei prodotti
+					if(isset($_POST['id']) && isset($_SESSION['login'])){ //se siamo loggati e se è stato schiacciato il bottone aggiungi al carrello
+						$id= $_POST['id'];
+						//cerchiamo il gioco tra gli elementi del documento xml 
+						for($i=0; $i<sizeof($elements);$i++){
+							$gioco=$elements->item($i);
+							$currid= $gioco->getAttribute('id');
+							if($currid == $id){
+								array_push($_SESSION['carrello'], $id); //aggiungiamo l'elemento al carrello
+								echo "<script> alert(\"Elemento aggiunto al carrello\") </script>";
+								break;
+							}
+						}
+					}
+					else if (isset($_POST['id']) && !isset($_SESSION['login'])){ //se abbiamo usato il bottone senza essere loggati
+						echo "<script>alert(\"Azione non permessa login necessario\")</script>";
+					}
+					
+					?>
+				</div>
+				</a>
 		
-			<div id="right"> <!-- Sezione che contiene lo slideshow di alcune immagini (funzione prettamente estetica) -->
-				<form action= "offerte.php" method="POST" > <!-- rimanderà l'utente in una pagina contente tutti i prodotti in offerta -->
-					<img name="slider" height="720px" width="300px" alt="slideshow" />
-					<input type="submit" name="bottoneofferte" class="bottoneofferte" value="Scopri le nostre offerte" >
-				</form>
-			</div>
-		
+		<div id="footer">
 		</div>
-		
-		<!-- FOOTER SECTION -->
-		<h3 class="footer_title">DICONO DI NOI</h3>
-		<div id="footer"> <!-- Sezione che contiene le recensioni dei clienti ( dicono di noi ... ) oltre che contatti e informazioni sulla sede -->
-		<?php
-		if(isset($_SESSION['login'])){ //possiamo scrivere una recensione solo se siamo loggati
-			echo'
-			<form name="form_recensioni" class="form_recensioni" action="recensione.php" method="POST" onsubmit="return formrecensioni()" >
-				<h4>La tua opinione &egrave importante, proprio per questo abbiamo riservato un area testuale per te al fine di conoscerla: </h4>
-				<img src="stella.png" height="10px" width="10px" alt="not found" /><select name="nuovavalutazione">
-					<option value="5">5</option>
-					<option value="4">4</option>
-					<option value="3">3</option>
-					<option value="2">2</option>
-					<option value="1">1</option>
-				</select><br />
-				<textarea name="nuovarecensione"></textarea><br />
-				<input type="submit" name="bottone_recensione" value="invia">
-			</form>';
-		}
-		?>
-			<div class="boxrecensioni">
-			<?php
-			/*stampiamo le recensioni estraendo le info dal doc xml*/
-			$conta_stelle=0;
-			for($i=0; $i< sizeof($recensioni_elements); $i++){
-				$recensione=$recensioni_elements->item($i);
-				$rec_username=$recensione->firstChild;
-				$rec_username_value=$rec_username->textContent;
-				$rec_valutazione=$rec_username->nextSibling;
-				$rec_valutazione_value=(int)($rec_valutazione->textContent);
-				$rec_testo= $recensione->lastChild;
-				$rec_testo_value=$rec_testo->textContent;
-				echo "<p class=\"recensione\"><nobr>";
-				while($conta_stelle<$rec_valutazione_value){//stampiamo la valutazione sotto forma di immagini iterate
-					echo"<img src=\"stella.png\" height=\"20px\" width=\"20px\" alt=\"not found\" />";
-					$conta_stelle++;
-				}
-				echo "</nobr>";
-				echo "<br /><strong>$rec_testo_value</strong><br /><span style=\"font-family:Courier; font-size:12px\">Recensione di $rec_username_value</span></p>"; 
-				$conta_stelle=0;//reinizializziamo il contatore
-			}
-			
-			///////AGGIUNTA AL CARRELLO//////////
-			if(isset($_POST['bottone'])){
-				if(isset($_SESSION['login'])){
-					//se è stato selezionato qualcosa lo aggiungiamo al carrello
-					$id=$_POST['bottone'];
-					//cerchiamo l'id nell'array (gli id dispari saranno riferiti alle console mentre quelli pari ai videogiochi)
-					if($id %2 == 0){
-						$risultato=cerca($id, $videogiochi_elements);
-					}
-					else{
-						$risultato=cerca($id, $piattaforme_elements);
-					}
-					if($risultato!=null){
-						array_push($_SESSION['carrello'],$risultato);
-						echo "<script>alert(\"Elemento aggiunto al carrello\");</script>";
-					}
-					else{
-						echo "<script>alert(\"Errore inaspettato\");</script>";
-					}
-				}
-				else{ //caso in cui non siamo loggati
-					echo "<script>alert(\"Azione non consentita login necessario\");</script>";
-				}
-			}
-			
-			?>
-			</div>
-		</div>
-	
 	</body>
-	
-
 
 
 </html>
